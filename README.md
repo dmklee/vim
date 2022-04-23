@@ -1,12 +1,11 @@
 ## how to setup
-0. Install `vim`
+1. Install `vim`
 ```
 sudo apt install vim
 ```
-1. Clone this repo
-2. Move `.vimrc` to base directory
+2. Download `.vimrc` file.  You should make a copy of an existing `.vimrc` if applicable.
 ```
-cp vim/.vimrc ./
+wget https://raw.githubusercontent.com/dmklee/vim/master/.vimrc -P ~/
 ```
 3. Setup Vundle
 ```
