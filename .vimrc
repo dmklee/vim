@@ -12,12 +12,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'djoshea/vim-autoread'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'morhetz/gruvbox'
-"Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'preservim/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'dense-analysis/ale'
 Bundle 'Yggdroot/indentLine'
 Bundle 'Valloric/YouCompleteMe'
 " All of your Plugins must be added before the following line
@@ -29,12 +29,6 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 set splitbelow
 
 set splitright
-
-"split navigations
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
 
 " Enable folding
 set foldmethod=indent
@@ -56,6 +50,16 @@ set shiftwidth=4
 
 set encoding=utf-8
 
+let g:ale_linters = {
+      \   'python': ['flake8', 'pylint'],
+      \   'javascript': ['eslint'],
+      \}
+let g:ale_fixers = {
+			\	'*': ['remove_trailing_lines', 'trim_whitespace'],
+			\}
+nnoremap <silent> <leader>a :ALEFix<CR>
+nnoremap <silent> <leader>q :ALEToggle<CR>
+
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -73,15 +77,17 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let python_highlight_all=1
 syntax on
 
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 syntax enable
 set termguicolors
 let g:gruvbox_italic=1
 set bg=dark
 colorscheme gruvbox
-"colorscheme monokai
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.egg-info$'] "ignore files in NERDTree
+"ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.egg-info$', 'venv', '__pycache__']
 
 set incsearch
 set hlsearch
@@ -97,8 +103,8 @@ set smartcase
 
 nnoremap ; :
 
-nnoremap <silent> <leader>f  :GFiles<CR>
-nnoremap <silent> <leader>F  :Files<CR>
+nnoremap <silent> <leader>F  :GFiles<CR>
+nnoremap <silent> <leader>f  :Files<CR>
 nnoremap <silent> <leader>=  :vertical resize +5<CR>
 nnoremap <silent> <leader>-  :vertical resize -5<CR>
 nnoremap <silent> <leader>+  :resize +5<CR>
@@ -108,7 +114,6 @@ set noswapfile
 
 set cursorline
 set cursorcolumn
-
 
 " relative numbering
 set nu rnu
