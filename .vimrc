@@ -112,8 +112,16 @@ nnoremap <silent> <leader>_  :resize -5<CR>
 
 set noswapfile
 
-set cursorline
-set cursorcolumn
+augroup CursorLineOnlyInActiveWindow                                                                                                                                                                           
+  autocmd!                                                                                                                                                                                                     
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline                                                                                                                                                  
+  autocmd WinLeave * setlocal nocursorline                                                                                                                                                                     
+augroup END                                                                                                                                                                                                    
+augroup CursorColumnOnlyInActiveWindow                                                                                                                                                                         
+  autocmd!                                                                                                                                                                                                     
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn                                                                                                                                                
+  autocmd WinLeave * setlocal nocursorcolumn                                                                                                                                                                   
+augroup END   
 
 " relative numbering
 set nu rnu
