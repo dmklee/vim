@@ -18,6 +18,25 @@ vim .vimrc
 5. Install Plugins with Vundle by running `:PluginInstall`
 6. Source `.vimrc` file by running `:source %`
 
+## Zsh Setup
+1. Install `zsh`
+```
+sudo apt install zsh
+```
+2. Set zsh as default shell (you may need to restart computer for this to take effect).
+```
+chsh -s /bin/zsh
+```
+3. Download `.zshrc` file.
+```
+wget https://raw.githubusercontent.com/dmklee/vim/master/.zshrc -P ~/
+```
+4. Re-open terminal and run:
+```
+zplug install
+```
+This will prompt PowerLevel configuration wizard. 
+
 ## Tmux Setup
 1. Install `tmux`
 ```
