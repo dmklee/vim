@@ -19,6 +19,10 @@ vim .vimrc
 6. Source `.vimrc` file by running `:source %`
 
 ## Tmux Setup
+1. Install `tmux`
+```
+sudo apt install tmux
+```
 2. Download `.tmux.conf` file.  You should make a copy of an existing `.tmux.conf` if applicable.
 ```
 wget https://raw.githubusercontent.com/dmklee/vim/master/.tmux.conf -P ~/
